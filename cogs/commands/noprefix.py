@@ -5,7 +5,7 @@ import aiosqlite
 from typing import Optional
 from datetime import datetime, timedelta
 from discord.ui import View, Button, Select
-from utils.config import 1510291022578716903
+from utils.config import Owner_id
 from utils import Paginator, DescriptionEmbedPaginator
 
 
@@ -14,7 +14,7 @@ async def is_staff(user, staff_ids):
 
 
 async def is_owner_or_staff(ctx):
-    return await is_staff(ctx.author, ctx.cog.staff) or ctx.author.id in 1510291022578716903
+    return await is_staff(ctx.author, ctx.cog.staff) or ctx.author.id in Owner_id
 
 
 
