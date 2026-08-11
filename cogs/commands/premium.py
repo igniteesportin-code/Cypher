@@ -69,7 +69,6 @@ async def is_premium(self, user_id, guild_id):
     async def premium(self, ctx):
         pass
 
-
 @premium.command(name="customize")
 async def customize(self, ctx, option: str, *, value: str = None):
 
