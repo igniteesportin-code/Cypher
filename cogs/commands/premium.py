@@ -31,16 +31,8 @@ class Premium(commands.Cog):
                     PRIMARY KEY (user_id, guild_id)
                 )
             ''')
-            await db.execute('''
-    CREATE TABLE IF NOT EXISTS premium_profiles (
-        user_id INTEGER,
-        guild_id INTEGER,
-        avatar TEXT,
-        banner TEXT,
-        bio TEXT,
-        PRIMARY KEY (user_id, guild_id)
-    )
-''')
+
+        
             await db.commit()
         async with aiosqlite.connect('database/np.db') as db:
             await db.execute('''
