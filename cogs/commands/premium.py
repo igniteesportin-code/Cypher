@@ -31,6 +31,16 @@ class Premium(commands.Cog):
                     PRIMARY KEY (user_id, guild_id)
                 )
             ''')
+            await db.execute('''
+    CREATE TABLE IF NOT EXISTS premium_profiles (
+        user_id INTEGER,
+        guild_id INTEGER,
+        avatar TEXT,
+        banner TEXT,
+        bio TEXT,
+        PRIMARY KEY (user_id, guild_id)
+    )
+''')
             await db.commit()
         async with aiosqlite.connect('database/np.db') as db:
             await db.execute('''
@@ -40,11 +50,116 @@ class Premium(commands.Cog):
                 )
             ''')
             await db.commit()
+async def is_premium(self, user_id, guild_id):
+        async with aiosqlite.connect('database/premium_codes.db') as db:
+            async with db.execute(
+                '''
+                SELECT expires_at
+                FROM premium_users
+                WHERE user_id = ? AND guild_id = ?
+                ''',
+                (user_id, guild_id)
+            ) as cursor:
+                row = await cursor.fetchone()
 
+        if not row:
+            return False
+
+        if row[0] == "lifetime":
+            return True
+
+        try:
+            expires_at = datetime.fromisoformat(row[0])
+            return expires_at > discord.utils.utcnow()
+        except:
+            return False
     @commands.group(name="premium", invoke_without_command=True)
     async def premium(self, ctx):
         pass
 
+
+@premium.command(name="customize")
+async def customize(self, ctx, option: str, *, value: str = None):
+
+    if not await self.is_premium(ctx.author.id, ctx.guild.id):
+        await ctx.send("❌ This feature is only available for Premium users.")
+        return
+
+    option = option.lower()
+
+    # Image attachment ko URL mein convert karo
+    if option in ("avatar", "banner"):
+        if not value and ctx.message.attachments:
+            value = ctx.message.attachments[0].url
+
+        if not value:
+            await ctx.send(
+                f"❌ Please attach an image or provide a URL for your {option}."
+            )
+            return
+
+    elif option == "bio":
+        if not value:
+            await ctx.send("❌ Please provide your Premium bio.")
+            return
+
+        if len(value) > 500:
+            await ctx.send("❌ Bio maximum 500 characters ka ho sakta hai.")
+            return
+
+    else:
+        await ctx.send(
+            "❌ Use:\n"
+            "`.premium customize avatar <image>`\n"
+            "`.premium customize banner <image>`\n"
+            "`.premium customize bio <text>`"
+        )
+        return
+
+    async with aiosqlite.connect("database/premium_codes.db") as db:
+
+        if option == "avatar":
+            await db.execute(
+                '''
+                INSERT INTO premium_profiles
+                (user_id, guild_id, avatar, banner, bio)
+                VALUES (?, ?, ?, NULL, NULL)
+                ON CONFLICT(user_id, guild_id)
+                DO UPDATE SET avatar = excluded.avatar
+                ''',
+                (ctx.author.id, ctx.guild.id, value)
+            )
+
+        elif option == "banner":
+            await db.execute(
+                '''
+                INSERT INTO premium_profiles
+                (user_id, guild_id, avatar, banner, bio)
+                VALUES (?, ?, NULL, ?, NULL)
+                ON CONFLICT(user_id, guild_id)
+                DO UPDATE SET banner = excluded.banner
+                ''',
+                (ctx.author.id, ctx.guild.id, value)
+            )
+
+        elif option == "bio":
+            await db.execute(
+                '''
+                INSERT INTO premium_profiles
+                (user_id, guild_id, avatar, banner, bio)
+                VALUES (?, ?, NULL, NULL, ?)
+                ON CONFLICT(user_id, guild_id)
+                DO UPDATE SET bio = excluded.bio
+                ''',
+                (ctx.author.id, ctx.guild.id, value)
+            )
+
+        await db.commit()
+
+    await ctx.send(f"✅ Premium {option} successfully updated!")
+
+
+@premium.command(name="generate")
     @premium.command(name="generate")
     @commands.is_owner()
     async def generate(self, ctx, duration: str, guild_count: int):
