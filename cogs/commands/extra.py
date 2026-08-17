@@ -249,7 +249,7 @@ class Extra(commands.Cog):
         
         embed = discord.Embed(colour=0x2b2d31, description=f"**<:1181899559853621419:1449446128733913331> Uptime: {uptime}**\n**<:ExoticUser:1449446145146486845> Users: {total_users}**\n**<:MekoChannel:1449446152108904509> Channels: {channel}**\n**<:ExoticGuild:1449446159490748426> Guilds: {total_guilds}**\n**<:MekoApplication:1449446166269001882> Shards: {ctx.guild.shard_id+1}/{len(self.bot.shards.items())}**\n**<:ExoticPing:1449446173659234415> Latency: {latency:.3f}ms**\n**<:ExoticCPU:1449446180688756787> Total Load: {cpu_percent}%**\n**<:MekoUtility:1449446187362160650> Storage: {using_storage_mb:.2f} MB / 2.00 GB ({disk_usage.percent}%)**\n<:ExoticRam:1449446194500599858> **Ram Info: {used_ram_mb:.2f} MB / 9.98 GB**\n**<:ExoticPython:1449446201362481354> Python: {python_version}**\n**<:ExoticCores:1449446209348571208> Cores: {cpu_total_cores}**\n**<:wl_dark:1449446216781009006> Music Wrapper: Lavalink.Py 5.9.0**\n**<:ExoticOS:1449446225001578710> Os: {os_name}**")
         embed.set_author(name="Some Informations About Me", icon_url=ctx.author.avatar.url)
-        embed.set_footer(text="Thanks for choosing Cypher", icon_url=self.bot.user.display_avatar.url)
+        embed.set_footer(text="Thanks for choosing RexZ", icon_url=self.bot.user.display_avatar.url)
         await ctx.send(embed=embed)
 
   @commands.command(name="uptime",
