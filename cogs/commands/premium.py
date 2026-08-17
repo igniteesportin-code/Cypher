@@ -104,7 +104,7 @@ class Premium(commands.Cog):
                 ''', (ctx.author.id, ctx.guild.id, activated_at, user_expires_at, code))
                 await db.commit()
                 
-        new_bot_name = f"Cypher Prime"
+        new_bot_name = f"RexZ Prime"
         avatar_url = 'https://media.discordapp.net/attachments/1245007104721420441/1252983899588526132/1718805023427.png?ex=67ceee30&is=67cd9cb0&hm=d8d6796d9190002f6ebde7681d8c7740eb6a4753d78a14c0d0a15916b1f227f3&=&format=webp&quality=lossless&width=600&height=600'
         
         try:
