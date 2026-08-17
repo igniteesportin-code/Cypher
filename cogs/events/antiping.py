@@ -82,7 +82,7 @@ class MenuView(discord.ui.View):
             
             embed = discord.Embed(colour=0x2b2d31, description=f"**<:1181899559853621419:1449446128733913331> Uptime: {uptime}**\n**<:ExoticUser:1449446145146486845> Users: {total_users}**\n**<:ExoticGuild:1449446159490748426> Guilds: {total_guilds}**\n**<:MekoApplication:1449446166269001882> Shards: {interaction.guild.shard_id+1}/{len(self.client.shards.items())}**\n**<:ExoticPing:1449446173659234415> Latency: {latency:.3f}ms**\n**<:ExoticCPU:1449446180688756787> Total Load: {cpu_percent}%**\n**<:MekoUtility:1449446187362160650> Storage: {using_storage_mb:.2f} MB / 2.00 GB ({disk_usage.percent}%)**\n<:ExoticRam:1449446194500599858> **Ram Info: {used_ram_mb:.2f} MB / 9.98 GB**\n**<:ExoticPython:1449446201362481354> Python: {python_version}**\n**<:ExoticCores:1449446209348571208> Cores: {cpu_total_cores}**\n**<:wl_dark:1449446216781009006> Music Wrapper: Lavalink.Py 5.9.0**\n**<:ExoticOS:1449446225001578710> Os: {os_name}**")
             embed.set_author(name="Some Informations About Me", icon_url=interaction.user.display_avatar.url)
-            embed.set_footer(text="Thanks for choosing Cypher", icon_url=interaction.user.display_avatar.url)
+            embed.set_footer(text="Thanks for choosing RexZ", icon_url=interaction.user.display_avatar.url)
             await interaction.response.edit_message(embed=embed, view=self)
         except Exception as e:
             print(f"An error occurred: {e}")
