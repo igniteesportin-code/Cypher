@@ -113,8 +113,7 @@ class HelpView(BasicView):
         self.ctx = ctx
         self.original_embed = original_embed
         self.add_item(HelpDropdown(bot, ctx))
-        self.add_item(discord.ui.Button(label="Invite me", url=f"https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&&permissions=8&scope=bot"))
-        self.add_item(discord.ui.Button(label="Support Server", url=f"https://discord.gg/aerox"))
+        self.add_item(discord.ui.Button(label="Support Server", url=f"https://discord.gg/wGn5RbNB8Q"))
 
 class Help(commands.Cog):
     def __init__(self, bot):
