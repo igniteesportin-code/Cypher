@@ -8,7 +8,7 @@ import datetime
 import platform
 import sys
 import logging
-from core import Cypher
+from core import RexZ
 import psutil
 import asyncio
 
@@ -149,7 +149,7 @@ class MenuView(discord.ui.View):
                 return
             
             embed = discord.Embed(colour=0x2b2d31)
-            embed.description="<:Team:1449451439100399878> [**Support Server**](https://discord.gg/aerox)\nFeel free to click on the `Support Server` link and join our community for any assistance you may need.\n\n<:MekoInvite:1449451444754190380> [**Bot Invite**](https://discordapp.com/oauth2/authorize?client_id=1417399852031148085&scope=bot+applications.commands&permissions=8)\nClick on the `Bot Invite` button to invite the Cypher bot to any of your servers.\n\n<:MekoTopgg:1449446097071116440> [**Vote on top.gg**](https://top.gg/bot/1191399940014997584/vote)\nClick on the `Vote On Top.gg` option and kindly cast your valuable vote for the incredible Cypher."
+            embed.description="<:Team:1449451439100399878> [**Support Server**](https://discord.gg/4WCh8BkrHq)\nFeel free to click on the `Support Server` link and join our community for any assistance you may need.\n\n<:RexZInvite:1449451444754190380> [**Bot Invite**](https://discordapp.com/oauth2/authorize?client_id=1417399852031148085&scope=bot+applications.commands&permissions=8)\nClick on the `Bot Invite` button to invite the Cypher bot to any of your servers.\n\n<:Topgg:1449446097071116440> [**Vote on)\nClick on the `Vote On Top.gg` option and kindly cast your valuable vote for the incredible RexZ."
             embed.set_author(name="Some Useful Links", icon_url=interaction.user.display_avatar.url)
             embed.set_footer(text="Cypher Information", icon_url=interaction.user.display_avatar.url)
             await interaction.response.edit_message(embed=embed, view=self)
