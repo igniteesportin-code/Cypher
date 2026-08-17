@@ -8,7 +8,7 @@ import datetime
 import platform
 import sys
 import logging
-from core import RexZ
+from core import Cypher
 import psutil
 import asyncio
 
