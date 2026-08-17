@@ -14,7 +14,7 @@ async def is_staff(user, staff_ids):
 
 
 async def is_owner_or_staff(ctx):
-    ctx.author.id in OWNER_IDS
+    return ctx.author.id in OWNER_IDS
 
 
 
