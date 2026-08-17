@@ -130,7 +130,7 @@ class Help(commands.Cog):
             em = discord.Embed(description=f"<:20_pink_heart:1449451227128660070> Prefix For This Server `{prefix}`\n<:MekoBlueRightArrow:1449451233239765196> Total Commands `{len(set(ctx.bot.walk_commands()))}`\n<:MekoLeveling:1449451239724027964> Choose A Specific Module Of Your Own Desire")
             em.add_field(
                 name="<:MekoCategory:1449446249341259850> __Modules__",
-                value=f"""{Antinuke} `:` AntiNuke\n{Utility} `:` Utility\n{Fun} `:` Fun\n{Moderation} `:` Moderation\n{Raidmode} `:` Automod\n{Welcomer} `:` Welcomer\n{Customroles} `:` Customroles\n{Confess} `:` Confessions\n{Giveaway} `:` Giveaway\n{Music} `:` Music\n{Voice} `:` Voice\n{Ignore} `:` Ignore\n{Extra} `:` Extra\n{Ai} `:` Ticket\n\n<:MekoInvite:1449451444754190380> __**Links**__\n[Invite](https://discordapp.com/oauth2/authorize?client_id=1417399852031148085&scope=bot+applications.commands&permissions=8) | [Support Server](https://discord.gg/aerox)""",
+                value=f"""{Antinuke} `:` AntiNuke\n{Utility} `:` Utility\n{Fun} `:` Fun\n{Moderation} `:` Moderation\n{Raidmode} `:` Automod\n{Welcomer} `:` Welcomer\n{Customroles} `:` Customroles\n{Confess} `:` Confessions\n{Giveaway} `:` Giveaway\n{Music} `:` Music\n{Voice} `:` Voice\n{Ignore} `:` Ignore\n{Extra} `:` Extra\n{Ai} `:` Ticket\n\n<:MekoInvite:1449451444754190380> __**Links**__\n[Invite](https://discord.com/oauth2/authorize?client_id=1538793577595932764) | [Support Server](https://discord.gg/4WCh8BkrHq)""",
                 inline=False)
             em.set_author(name="Help Menu", icon_url=ctx.bot.user.avatar.url if ctx.bot.user.avatar else ctx.bot.user.default_avatar.url)
             em.set_thumbnail(url=self.bot.user.avatar)
