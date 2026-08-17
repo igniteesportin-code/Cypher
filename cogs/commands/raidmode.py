@@ -324,10 +324,10 @@ class Automod(commands.Cog):
 
             try:
                 for channel in interaction.guild.channels:
-                    if channel.name == "cypher-logs":
+                    if channel.name == "Rexz-logs":
                         await interaction.response.send_message(f"A logging channel with the name \"cypher-logs\" already exists.", ephemeral=True)
                         return
-                log_channel = await interaction.guild.create_text_channel("cypher-logs", overwrites=overwrites)
+                log_channel = await interaction.guild.create_text_channel("rexz-logs", overwrites=overwrites)
                 guild_id = interaction.guild.id
 
                 async with aiosqlite.connect("database/automod.db") as db:
